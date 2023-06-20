@@ -2,11 +2,63 @@
 %! Date = 4/7/2017
 
 % Preamble
-\documentclass[11pt]{article}
+\documentclass[11pt]{report}
 
 % Packages
+\usepackage{subfiles}
 
 % Document
 \begin{document}
+
+    % Meta
+    % todo: replicate title page with Honors Faculty signatures
+    \title{Financial Analysis with Artificial Neural Networks}
+    \author{Andrew Linzie}
+    \date{7 April 2017}
+    \maketitle
+
+    % 1
+    \chapter{Introduction}\label{ch:introduction}
+    \subfile{chapters/1.tex}
+
+    % 2
+    \chapter{Time Series Analysis}\label{ch:time-series-analysis}
+    \subfile{chapters/2.tex}
+    
+    % 3
+    \chapter{Artificial Neural Networks}\label{ch:artificial-neural-networks}
+    \subfile{chapters/3.tex}
+
+    % 4
+    \chapter{Review of Literature}\label{ch:review-of-literature}
+    \subfile{chapters/4.tex}
+
+    % 5
+    \chapter{Error Back-Propagation with Stochastic Gradient Descent}\label{ch:error-back-propagation-with-stochastic-gradient-descent}
+    \subfile{chapters/5.tex}
+
+    % 6
+    \chapter{Extreme Learning Machines}\label{ch:extreme-learning-machines}
+    \subfile{chapters/6.tex}
+
+    % 7
+    \chapter{Methods}\label{ch:methods}
+    \subfile{chapters/7.tex}
+
+    % 8
+    \chapter{Results}\label{ch:results}
+    \subfile{chapters/8.tex}
+
+    % 9
+    \chapter{Discussion}\label{ch:discussion}
+    \subfile{chapters/9.tex}
+
+    % 10
+    \chapter{Conclusion}\label{ch:conclusion}
+    \subfile{chapters/10.tex}
+
+    % 11
+    \chapter{Appendix}\label{ch:appendix}
+    \subfile{chapters/11.tex}
 
 \end{document}
