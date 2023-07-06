@@ -7,6 +7,108 @@
 % Document
 \begin{document}
 
+    \section{Introduction}\label{sec:introduction2}
+    The previous chapter about time series analysis discussed the classical techniques of estimating the future values of some process.
+    The process is assumed to be stochastic, and the process may be stationary or non-stationary.
+    These properties alone are not an exhaustible list of the ways to classify a system, but they are the most important when determining which type of model to use.
+    The question now becomes, is this process better estimated with a linear or a non-linear model?
+    Since this thesis is concerned with the forecasting stock markets, a non- linear model is necessary for regression.
+    As discussed in previous chapters, the noise from geopolitical events can drastically effect the accuracy of forecast.
+    The changes within the stock market can be violent and sudden, and these changes are most accurately predicted with a non- linear model.
 
+    The pure time series analysis approach includes building a model, parameter estimating, and determining how to update those parameters to fit the future.
+    Machine learning is the other method of approach, and machine learning has become popular for forecasting in recent years.
+    The machine learning approach is significantly more complicated because themethod requires the user to know how to program, build models, estimate parameters, and structure data to be successful.
+    From academic articles detailed within the review of literature chapter, the consensus among researchers is that machine learning models, when correctly tuned, always outperform time series analysis models.
+    The machine learning approach used within this thesis is known as an artificial neural network.
+
+    Artificial neural networks are used on a regular basis by people across the world.
+    Hand writing classification at the post office, speech synthesis from Google or Siri, and image classification are all examples of regression with neural networks.
+    They can be applied to nearly any problem that has available data and can be quantified numerically or by labels.
+    The method of training, validating, and testing neural networks is adopted within this thesis for the purpose of stock market forecasting.
+    A detailed description is provided within this chapter for understanding the mathematical theory presented in chapters five and six.
+    Artificial neural networks have a detailed history, and for those who are interested in the origins of neural networks, Warren McCulloch, Walter Pitts, Donald Hebb, Frank Rosenblatt, David E. Rumelhart, James McClelland, and many more are the innovators of artificial neural networks.
+
+    \section{Layers}\label{sec:layers}
+    Artificial neural networks were developed with inspiration from the human brain's structure.
+    The human brain contains neurons, synapses, and electrical signals communicated over those synapses.
+    An artificial neural network has similar components with nodes, connections, and weights representing the human brain's neurons, synapses, and strengths of electrical signals, respectively.
+    Humans are able to logically deduce, artistically express themselves, and possess consciousness because of the brain’s structure.
+    An artificial neural network implements that structure,and there are three different layers within a neural network: the input layer, the hidden layer, and the output layer.
+    An artificial neural network can take on Figure 3.1: A general artificial neural network architecture many forms where connections, loops, and multiple directions of connections are permitted, but only one type of neural network is presented within this paper.
+    Do not be mistaken, while they are similar, artificial neural networks do not resemble humans brains in size or abstract reasoning.
+    Google is working on creating an human brain sized artificial neural network; Although, empirical observation has proven that neural networks do not need extensive computational power for successful domain specific regression.
+    Feed-forward neural networks are a subset of the many types of neural networks,and they are explored below.
+
+    A feed forward neural network is like the function 𝑦 = 𝑓(𝑥) in mathematics.
+    The input layer is where information is “fed” into the model to provide numbers for the hidden layer to mathematically transform.
+    The hidden layer uses an activation function to squash the inputs for the output layer.
+    Depending on the type of problem a neural network is build for, many hidden layers may be needed to receive accurate results.
+    A neural network with only one hidden layer is termed a “Single-layer feed-forward neural network,” and single-layer feed forward neural networks are the only type used within this thesis.
+    The output layer collects the results of regression or classification within the hidden layer and sums the results.
+    Between these three layers, there are connections from every node to every other node within the next layer, and on each of these connections there is an associated number which determines the strength of the connection.
+    The specifics of these components are explained in detail in parts 4.3, 4.4, and 4.5.
+
+
+    \section{Nodes}\label{sec:nodes}
+    The nodes of a neural network resemble the neurons of a human brain, and the nodes within each of the three layers have a different function.
+    The nodes within the input layer are purposed with mapping an input vector 𝑥 multiplied by weights into the hidden nodes.
+    The hidden layer nodes take a vector 𝑥 ∗ 𝑤 from the previous layer for inputting into an activation function.
+    The output layer nodes sum the weights multiplied by the hidden layer node outputs,and the results are the output of each output node.
+    Mathematically, this process can be expressed as the output at the 𝑘 𝑡ℎ node.
+    𝑚
+    𝑦 𝑘 = 𝜙(∑ 𝑤 𝑘𝑗 𝑥 𝑗 )
+    𝑗=0
+    This formula explains the process of propagating values from the input nodes towards the output nodes; the previous layer node's outputs are multiplied by their weights, summed, and the summed value is the input to an activation function.
+    To better understand this process, refer to figure 4.
+    The number of nodes contained within each layer is dependent on the domain specific application.
+    The number of nodes within the input layer is the same number of Figure 3.2: Perceptron features a researcher thinks accurately represents the amount of information which should be provided to the neural network to receive correct classifications within the output layer.
+    The number of hidden layer nodes is empirically determined through the process of model selection and varies; Given 𝑛 input nodes, the Kolmogorov-Arnold Representation Theorem gives the general rule that 2𝑛 + 1 nodes with a single hidden-layer neural network can approximate any nonlinear piecewise continuous function.
+
+    The output layer contains the same amount of nodes as the target values of the neural network.
+    Applying this knowledge to the stock market, the input nodes or features, would be relevant information like the close, open, volume, high, low, technical indicators, or other information deemed important for regression.
+    The hidden nodes would be chosen by the method of iteratively determining the best number or by using a validation set.
+    The output layer typically consists of only one node when applied to forecasting stock markets.
+    The level estimation method is used to predict the next closing value 𝑡 time units into the future, and the  classification method is used for forecasting the sign change of a stock 𝑡 time units into the future.
+
+
+    \section{Weights}\label{sec:weights}
+    The weights of the neural network are initialized randomly and modified to solve the transformation problem between the input and output layers.
+    Within a single-layer feed-forward neural network, there are two sets of weights; the first set of weights exists between the input and hidden layers while the other set is between the hidden and output layers.
+    Each node has a connection and corresponding weight to every other node in the next layer.
+    The purpose of this connection scheme is to control how influential each feature is in reducing the error within output layer.
+    Any weights within the neural network are initialized within the interval [0, 1].
+    A weight with a value of 1 allows the previous layer node to be “fully on,” while a weight with the value of 0 turn that node “fully off.” Along with the activation function, number of nodes within different layers, and available data sets, the weights are one of the most important component within a neural network.
+    The weights of a neural network transform an input from an n-dimension space into an output in an m-dimension space, which is mathematically described as 𝑓: ℝ 𝑚 → ℝ 𝑛 .
+
+    \section{The Activation Function}\label{sec:the-activation-function}
+    The activation function of a neural network determines the output of a node.
+    It is termed an activation function because the value outputted at each node effects or activates the next layer of nodes.
+    An activation function is also called a “squasher function” because it limits the output of each node to a predetermined range.
+    The activation function is meant to model the process of natural learning within the human brain.
+    An important characteristic of the function is that a small change in the input to the node has a corresponding small change in the output of the node.
+    It is necessary for an activation function to be differentiable at all points, which is discussed further in chapter five. 14
+
+    The input layer uses no activation function, while the hidden layer always uses an activation function.
+    The output layer can use an activation function but typically uses the linear activation function 𝑓 (𝑥 ) = 𝑥.
+    The output layer is used to sum the results of the transformation within the hidden layer, and does not need to modify the classified data.
+    There are many different types of activation functions which may be used for neural networks.
+    Examples of continuously differentiable nonlinear activation functions commonly used in neural networks function (refer to figure 5).
+
+    It is important to include a few observations about the domain and range of the logistic and hyperbolic tangent function.
+    As their inputs approach infinity, the limit of the logistic function approaches 0 and 1 while hyperbolic tangent approaches −1 and 1.
+    The range changes very little for both function where they asymptotically approach their limits, and finding weights which minimize error for large inputs is difficult.
+    To remedy this problem, data is scaled to the domain of [0, 1] or [−1, 1] prior to training, and the choice of the interval depends on the method of scaling and activation function.
+    The effect of scaling input data to a specified range allows the network to fully take advantage of the activation function.
+    This step is known as preprocessing, and the practical implementation is discussed in chapter seven.
+
+    \section{Performance of a Neural Network}\label{sec:performance-of-a-neural-network}
+    The main point and take-away stressed within this chapter is the possibility of taking some input in an n-dimensional space and transforming it into an m-dimensional space, which means that neural networks can be used for classifying data.
+    Whether this method is successful or not is another question entirely.
+    The success of a neural network depends on many different factors relating to its structure, provided information, and optimization method.
+
+    In practice, the choosing the structure of the network stems from theory or past researcher’s success.
+    Tuning the network for the domain specific problems involves experimenting with choosing different parameters iteratively or exhaustively and influences the success of a neural network.
+    Within chapters five and six, two methods are proposed for updating the weights of a neural network to successfully forecast the next day's closing price,and chapter seven highlights the implementation of those optimization methods.
 
 \end{document}

@@ -6,7 +6,167 @@
 
 % Document
 \begin{document}
+    % 2.1
+    \section{Introduction}\label{sec:introduction}
+    Time flows at a smooth pace and links together the phenomena of life, so quite naturally,
+    the study of systems through time, time series analysis, is fundamentally important.
+    A time series is an ordered set of observations by time and is plotted with time increasing to the right and the system's value increasing above.
+    The purpose of studying a time series is to analyze the serial correlation of observations with future values, termed forecasting.
+    Methods gleaned from time series analysis have been applied in many relevant fields like chemistry, biology, physics, psychology, finance, and business with the purpose of planning for the future.
 
+    Time series analysis is a branch of mathematics that investigates the dependence structure of a sample of observations.
+    The application of theorems derived from time series analysis allows for accurate forecasting; the term accurate is user-defined, and the accuracy of these forecasts depend on numerous parameters.
+    Some things to consider include the sample data's origin, amount of data, interval between observations, choice of model, estimation of model parameters, forecasting length, suspected noise, and desired accuracy are just a few of these important factors.
+    The analyst has the freedom of choosing these parameters to receive their desired empirical results.
+    With the uncertainty and freedom associated with time series analysis, one should question the goals of this branch.
 
+    The objective of studying time series includes basic application, theory, and model building.
+    At the most basic level of analysis, one might desire to try to describe a system with the construction of a mathematical series.
+    One might propose a hypothesis for explaining the behavior of a time series or relate the observation to imposing rules.
+    Someone could use learned information from analyzing a time series to forecast into the future; forecasting relies on the assumption that future values will follow similar properties of the past.
+    Determining the causation of a time series will give the analyst better forecasts.
+    An analyst could use time series methods to return indicators of ominous events or empirically alter parameters to examine the results.
+    The most general objective is to use the derived theory of time series for building predictive models.
+    These models could be applied towards forecasting rain fall, the warming of the earth, or forecasting stock market values.
+    Mathematics is the language of the cosmos, beautifully presented, structurally complex, and the applications of times series analysis are endless. % todo: cite 1
 
+    % 2.2
+    \section{History of Time Series Analysis}\label{sec:history-of-time-series-analysis}
+
+    Time series analysis has been studied by mathematicians through history, but the theory of the field changed within the early 1900s.
+    Within mathematics, researchers can become stuck on a problem, and approaching the problem from a different perspective is sometimes necessary for advancements.
+    As mathematics has progressed through the centuries, the perspective of many branches changed, but time-series analysis resisted this change the longest.
+    The initial perspective of time-series analysis was deterministic as researchers believed
+    and searched for the equations that described any time series without their errors.
+    The errors within these systems were thought to be observation errors and not part of the underlying process.
+    Analysts tried to predict change within financial markets with Fourier series and analogous methods.
+    Trade, population, epidemics, and policy are a few of the many factors
+    that affect financial markets, and these are not deterministic in any sense. % todo: cite 2
+
+    The study of differential equation is concerned with finding unique solutions to rates of change problems through time; many mathematicians have approached the study of time-series with differential equations.
+    Until 1926, the search for the deterministic equations describing the cyclical movement of financial markets continued.
+    In 1927, Udny Yule, a British statistician, deviated from previous deterministic views by providing an analogy for a random component within an analyzed system.
+    He started a wave of new literature that contributing to the development of time-series analysis through the 20 th century.
+    Within his paper, ``On a Method of Investigating Periodicities in Disturbed Series,with special reference to Wolfer’s Sunspot Numbers,'' Yule describes the difference between superposed fluctuations and true disturbances.
+    Here is an excerpt from the introduction of his paper explaining this idea:
+
+    “When periodogram analysis is applied to data respecting any physical phenomenon in the expectation of eliciting one or more true periodicities, there is usually, as it seems to me, a tendency to start from the initial hypothesis that the periodicity or fluctuations are masked solely by such more or less random superposed fluctuations – fluctuations which do not in any way disturb the steady course of the underlying periodic function or functions.
+    It is true that the periodogram itself will indicate the truth or otherwise of the hypothesis made, but there seems no reason for assuming it to be the hypothesis most likely a priori.
+    If we observe at short equal intervals of time the departures of a simple harmonic pendulum from its position of rest, errors of observation will cause superposed fluctuations of the kind supposed in fig.\ 1.
+    But by improvement of apparatus and automatic methods of recording, let us say, errors of observation are practically eliminated.
+    The recording apparatus is left to itself, and unfortunately boys get into the room and start pelting the pendulum with peas, sometimes from one side and sometimes from the other.
+    The motion is now affected, not by superposed fluctuations but by true disturbances, and the effect on the graph will be of an entirely different kind.
+    The graph will remain surprisingly smooth, but amplitude and phase will vary continually.” % todo: cite 3
+    Giving a better explanation, Yule is saying that there are random fluctuations that effect the underlying system.
+    This idea that a system contains errors contributed to the idea that modeling time series should account for random fluctuations, modernly termed shocks.
+    Today, these shocks are denoted by 𝜖 𝑡 ~𝑁(0, 𝜎 2 ), which is termed a random variable normally distributed with mean zero and variance sigma-squared.
+    The concept of a process with its shocks leads to the concept of a stochastic time-series and is the subject of prolific discussion within academia.
+    As people desire any predictive advantage within stock markets, the study of stochastic processes can be applied towards financial markets.
+
+    % 2.3
+    \section{Time Series Definitions}\label{sec:time-series-definitions}
+
+    % 2.3.1
+    \subsection{Continuous and Discrete Time Series}\label{subsec:continuous-and-discrete-time-series}
+    A time series is a sequence of n observations ordered by time.
+    Let {𝑦 𝑡 𝑛 } or 𝑦 𝑡 1 , 𝑦 𝑡 2 , . . . , 𝑦 𝑡 𝑛 denote a time series at equally spaced intervals 𝑡 1, 𝑡 2, . . . , 𝑡 𝑛 for natural n.
+    The length between these observations are different depending on the system being analyzed.
+    For example, the time interval between measuring temperature and wind speed is much different than measuring the harvest of crops between years.
+    Temperature and wind speed are examples of continuous time series, while the size of a harvest of crops between years is an example of a discrete time series.
+    A continuous time series represents a constantly changing system over an interval of time, while a discreet time series has a finite amount of observations.
+    Within statistics, a time series has a mean and variance which are used for forecasting models.
+    A decomposition model may be used to better explain the interactions between different factors affecting the change in a series.
+    Let, 𝑦 𝑡 be the value, 𝑠 𝑡 be the seasonal variation, 𝑟 𝑡 be the trend, 𝑐 𝑡 be the cyclic component, and let 𝜖 𝑡 ~𝑁(0, 𝜎 2 ) be the irregular component of the series, then the decomposition model can be presented as:
+    𝑦 𝑡 = 𝑠 𝑡 + 𝑟 𝑡 + 𝑐 𝑡 + 𝜖 𝑡
+    The seasonal variation is the pattern influenced by the time of the year, the trend of a series reflects the long-term progression, the cyclic component is the repeating but non-periodic pattern present within a time series,and there is always a shock value 𝜖 𝑡 in an observable process.
+    This is to say that many factors go into the value of a time series, which effects the visual randomness.
+    The different components of 𝑦 𝑡 are recognizable in international airline passenger data, which measures the number of people traveling internationally each year.
+    The seasonal variation, trend, cycle, and shock are obvious.
+
+    % 2.3.2
+    \subsection{Stationary versus Non-Stationary}\label{subsec:stationary-versus-non-stationary}
+    The study of time series forecasting is divided into two types of stochastic models termed stationary and non-stationary models.
+    Stationary models assume that the process remains within a statistical equilibrium where the mean and variance of the time series do not
+    vary over time; a non-stationary process has no constant mean and variance level.
+    If a trend exists within the data, then the process is non-stationary.
+    Stationarity is an unrealistic quality to assume for an industry, business, or economically related process, but stationary models have been shown to be appropriate for some non-stationary processes. % todo: cite 4
+    Non-stationary time series require different forecasting methodology because they possess greater variation.
+
+    % 2.3.3
+    \subsection{Noisy Processes}\label{subsec:noisy-processes}
+    As Yule suggested the noise of the surrounding environment combine into a third series.
+    Some sources of noise come from political, technological, or geographic events within the world, and this noise is reflected in stock prices.
+    In particular, the stock market is assumed to be a non-stationary process, forecasting stocks is modeled with non-stationary methods.
+    There are numerous examples of external noise which can complicate mathematical model building.
+    Within the first few days of his term, President Donald Trump claimed on Twitter that the Federal government would not build a fleet of Air Force One planes.
+    Ignoring political opinions, Boeing's stock took an immediate dive following those comments because those planes represented over $4 billion in contracts, which Boeing had begun building.
+
+    % 2.4
+    \section{Linear and Nonlinear Forecasting Models}\label{sec:linear-and-nonlinear-forecasting-models}
+
+    % 2.4.1
+    \subsection{Introduction}\label{subsec:introduction}
+
+    The purpose of this section is to describe common methods used for general forecasting.
+    Linear and nonlinear forecasting models, the ideas of model selection, and parameter estimation are presented.
+    The common idea of the models presented below is that they rely on already known information to forecast future values of the process.
+    Linear models are appropriate for short-term forecasting, they have the advantage of being very quick, but they lack the accuracy and adaptive qualities that non-linear models possess.
+    If the market has a threshold response where the price hits a certain level and starts to climb rapidly, a linear model would not react quickly to the change or be able to predict the end of the trend.
+    Similarly, if there were a slow climb in price to a sudden drop, termed a bubble, then a linear model would not perform well in this situation either.
+    To summarize,linear models are not accurate for highly volatile markets where the changes in price are sudden and large, but they offer a useful perspective which helps to understand the method of forecasting.
+
+    % 2.4.2
+    \subsection{Linear Regression}\label{subsec:linear-regression}
+    The simplest model that everyone learns within statistics or economic classes is the linear regression model, which provides a best-fit line to a sample of data.
+    The deterministic equation modeling linear regression is given below. 𝑦 𝑡 = ∑ 𝛽 𝑘 𝑥 𝑘,𝑡 + 𝜖 𝑡
+    Within this model, the future values 𝑦 𝑡 are based upon the linear combination of the input values 𝑥 𝑘,𝑡 with its estimated 𝛽 𝑘 value and the disturbance term 𝜖 𝑡 .
+    The parameters ̂ 𝑘 , an estimation of 𝛽, and this is estimated needed to use the linear regression method requires 𝛽 by minimizing the sum of square differences between the actual observation 𝑦 𝑡 and the observations predicted by the linear model, 𝑦 ̂ 𝑡 . % todo: cite 5
+    Less obviously, McNelis proposes the estimation problem as
+    𝑇
+    𝑀𝑖𝑛𝛹 =
+    𝑇
+    ∑ 𝜖̂ 𝑡2
+    𝑡=1
+    = ∑(𝑦 𝑡 − 𝑦 ̂ 𝑡 ) 2
+    𝑡=1
+    𝑠. 𝑡. 𝑦 𝑡 = ∑ 𝛽 𝑘 𝑥 𝑘,𝑡 + 𝜖 𝑡
+    𝑦 ̂ 𝑡 = ∑ 𝛽̂ 𝑥 𝑘,𝑡
+
+    12𝜖 𝑡 ~𝑁(0, 𝜎 2 )
+
+    % 2.4.3
+    \subsection{Generalized Autoregressive Conditional Heteroskedasticity}\label{subsec:generalized-autoregressive-conditional-heteroskedasticity}
+    With nonlinear models, people try to approximate the underlying process by creating non-linear functional forms and create assumptions for estimating parameters.
+    Proposed by Bollerslev(1986, 1987) and Engle (1982), GARCH is a method for forecasting, and Engle received the Nobel Prize in 2003 for his research on this model. % todo: cite 6, 7, 8
+    The 𝐺𝐴𝑅𝐶𝐻(𝑝, 𝑞) model has 𝜎 2 terms of order 𝑝 and the other components is a 𝐴𝑅𝐶𝐻(𝑞) model.
+    First, this model involves forecasting the variance of a process based upon previous variance forecasts and parameters, which defines the evolution of the conditional variance.
+    McNelis thoroughly explains, “the variance of the disturbance term directly affects the mean of the dependent variable and evolves through time as a function of its own past value and the past squared prediction error.” 5 Below, a mathematical description of the GARCH model is provided.
+    𝑦 𝑡 = 𝑥 𝑡′ 𝑏 + 𝜖 𝑡
+    𝜖 𝑡 |ψ t ~𝑁(0, 𝜎 𝑡2 )
+    𝑞
+    𝜎 𝑡2
+    =𝜔
+    2
+    + 𝛼 1 𝜖 𝑡−1
+    +⋯+
+    2
+    𝛼 𝑞 𝜖 𝑡−𝑞
+    +
+    2
+    𝛽 1 𝜎 𝑡−1
+    + ⋯+
+    2
+    𝛽 𝑝 𝜎 𝑡−𝑝
+    =𝜔+
+    2
+    ∑ 𝛼 𝑖 𝜖 𝑡−𝑖
+    𝑖=1
+    𝑝
+    2
+    + ∑ 𝛽 𝑖 𝜎 𝑡−𝑖
+    𝑖=1
+    The parameters for the different variables can be found by the typical method of maximizing the sum of the logarithm likelihood function over the entire sample.
+    For those not familiar with statistics, the main point of this chapters was to stress the mathematical logic of forecasting; the future is estimated with known or historical values.
+    Forecasting with machine learning is similar because an artificial neural network is trained on previous values to forecast stocks.
+    There are many other models that could have been presented within this section, but there’s nothing to gain from presenting this information since all future information relates to machine learning.
 \end{document}
